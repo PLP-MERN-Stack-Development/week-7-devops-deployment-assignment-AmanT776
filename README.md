@@ -76,3 +76,40 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [Railway Documentation](https://docs.railway.app/)
 - [Vercel Documentation](https://vercel.com/docs)
 - [Netlify Documentation](https://docs.netlify.com/) 
+## 🚀 Deployment Process
+
+This project uses **GitHub Actions** for Continuous Integration (CI) and Continuous Deployment (CD) of both the frontend (React) and backend (Express.js) applications.
+
+### 1. Continuous Integration (CI)
+
+- Frontend (`frontend-ci.yml`):
+  - Runs on every push or pull request affecting the `frontend/` directory.
+  - Installs dependencies, runs tests, and builds the React app.
+- Backend (`backend-ci.yml`):
+  - Runs on every push or pull request affecting the `backend/` directory.
+  - Installs dependencies and runs backend tests.
+
+### 2. Continuous Deployment (CD)
+
+- Frontend (`frontend-cd.yml`):
+  - Triggers on every push to the `main` branch that affects the `frontend/` directory.
+  - Installs dependencies, builds the React app, and deploys it to the configured platform (e.g., Vercel, Netlify, or your custom server).
+- Backend (`backend-cd.yml`):
+  - Triggers on every push to the `main` branch that affects the `backend/` directory.
+  - Installs dependencies, builds the backend (if needed), and deploys it to the configured platform (e.g., Heroku, Render, or your custom server).
+
+### 3. Secrets & Configuration
+
+- Deployment workflows require secrets (API keys, tokens, etc.) to be set in your repository’s **Settings > Secrets and variables > Actions**.
+- Example secrets:
+  - For Vercel: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`
+  - For Heroku: `HEROKU_API_KEY`, `HEROKU_APP_NAME`, `HEROKU_EMAIL`
+
+### 4. Customizing Deployment
+
+- Update the deployment steps in the workflow files to match your hosting provider.
+- Make sure to add any required build or environment configuration.
+
+---
+
+URL for the deployed application: https://blog-jx3v.vercel.app/
